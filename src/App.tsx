@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import ServiceCard from './components/Servicecard'
 import type { OrdemServico } from './types/types'
 import Header from './components/Header'
 import NewService from './components/NewService'
+import ServiceBoard from './components/ServiceBoard'
 
 function App() {
   const osTeste: OrdemServico = {
@@ -22,9 +22,7 @@ function App() {
   return (
     <>
       <Header />
-      {ordensServico.map((os) => (
-      <ServiceCard key={os.id} ordemServico={os} />
-    ))}
+      <ServiceBoard ordensServico={ordensServico} />
       <NewService adicionarOS={adicionarOS} />
     </>
   )
