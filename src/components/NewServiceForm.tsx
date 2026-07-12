@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { OrdemServico } from "../types/types";
 
-interface NewServiceProps {
+interface NewServiceFormProps {
   adicionarOS: (novaOS: OrdemServico) => void;
 }
 
-function NewService({ adicionarOS }: NewServiceProps) {
+function NewServiceForm({ adicionarOS }: NewServiceFormProps) {
   const [nomeCliente, setNomeCliente] = useState("");
   const [modeloAparelho, setModeloAparelho] = useState("");
   const [defeito, setDefeito] = useState("");
@@ -67,4 +67,4 @@ function NewService({ adicionarOS }: NewServiceProps) {
   );
 }
 
-export default NewService;
+export default NewServiceForm;

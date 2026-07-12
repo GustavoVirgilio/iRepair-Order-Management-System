@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import type { OrdemServico } from './types/types'
 import Header from './components/Header'
-import NewService from './components/NewService'
+import NewServiceForm from './components/NewServiceForm'
 import ServiceBoard from './components/ServiceBoard'
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="bg-sky-100 min-h-screen flex  flex-col gap-4">
       <Header />
-      <NewService adicionarOS={adicionarOS} />
+      <NewServiceForm adicionarOS={adicionarOS} />
       <ServiceBoard ordensServico={ordensServico} atualizarStatus={atualizarStatus} />
     </div>
   )
