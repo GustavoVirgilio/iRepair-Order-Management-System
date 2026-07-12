@@ -11,26 +11,32 @@ function ServiceBoard({ ordensServico }: ServiceBoardProps) {
   const entregue = ordensServico.filter((os) => os.status === "entregue");
 
   return (
-    <div>
-      <div>
-        <h2>Em andamento</h2>
-        {emAndamento.map((os) => (
-          <ServiceCard key={os.id} ordemServico={os} />
-        ))}
+    <div className="bg-sky-100 flex flex-row gap-4 p-4">
+      <div className="flex-1 bg-blue-50 rounded-lg shadow">
+        <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Em andamento </h2>
+        <div className="flex flex-col gap-2 p-2">
+          {emAndamento.map((os) => (
+            <ServiceCard key={os.id} ordemServico={os} />
+          ))}
+        </div>
       </div>
 
-      <div>
-        <h2>Concluída</h2>
-        {concluida.map((os) => (
-          <ServiceCard key={os.id} ordemServico={os} />
-        ))}
+      <div className="flex-1 bg-blue-50 rounded-lg shadow">
+        <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Concluída </h2>
+        <div className="flex flex-col gap-2 p-2">
+          {concluida.map((os) => (
+            <ServiceCard key={os.id} ordemServico={os} />
+          ))}
+        </div>
       </div>
 
-      <div>
-        <h2>Entregue</h2>
-        {entregue.map((os) => (
-          <ServiceCard key={os.id} ordemServico={os} />
-        ))}
+      <div className="flex-1 bg-blue-50 rounded-lg shadow">
+        <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Entregue </h2>
+        <div className="flex flex-col gap-2 p-2">
+          {entregue.map((os) => (
+            <ServiceCard key={os.id} ordemServico={os} />
+          ))}
+        </div>
       </div>
     </div>
   );
