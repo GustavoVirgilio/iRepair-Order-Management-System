@@ -6,31 +6,8 @@ import NewServiceForm from './components/NewServiceForm'
 import ServiceBoard from './components/ServiceBoard'
 
 function App() {
-  const osTeste1: OrdemServico = {
-    id: Date.now(),
-    nomeCliente: "Pedro",
-    modeloAparelho: "iPhone 10",
-    defeito: "Tela quebrada",
-    status: "em andamento",
-  }
 
-  const osTeste2: OrdemServico = {
-    id: Date.now() + 1,
-    nomeCliente: "Luiz",
-    modeloAparelho: "Motorola",
-    defeito: "Bateria",
-    status: "concluida",
-  }
-
-  const osTeste3: OrdemServico = {
-    id: Date.now() + 2,
-    nomeCliente: "Pedro",
-    modeloAparelho: "macbook air",
-    defeito: "não liga",
-    status: "entregue",
-  }
-
-  const [ordensServico, setOrdensServico] = useState<OrdemServico[]>([osTeste1, osTeste2,osTeste3])
+  const [ordensServico, setOrdensServico] = useState<OrdemServico[]>([])
 
   function adicionarOS(novaOS: OrdemServico) { 
     setOrdensServico((valorAnterior) => [...valorAnterior, novaOS])
