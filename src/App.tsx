@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import ServiceCard from './components/Servicecard'
 import type { OrdemServico } from './types/types'
+import Header from './components/Header'
 
 function App() {
   const osTeste: OrdemServico = {
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <ServiceCard ordemServico={osTeste} />
     </>
   )
