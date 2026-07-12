@@ -3,9 +3,10 @@ import ServiceCard from "./Servicecard";
 
 interface ServiceBoardProps {
   ordensServico: OrdemServico[];
+  atualizarStatus: (id: number, novoStatus: OrdemServico["status"]) => void;
 }
 
-function ServiceBoard({ ordensServico }: ServiceBoardProps) {
+function ServiceBoard({ ordensServico, atualizarStatus }: ServiceBoardProps) {
   const emAndamento = ordensServico.filter((os) => os.status === "em andamento");
   const concluida = ordensServico.filter((os) => os.status === "concluida");
   const entregue = ordensServico.filter((os) => os.status === "entregue");
@@ -16,7 +17,7 @@ function ServiceBoard({ ordensServico }: ServiceBoardProps) {
         <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Em andamento </h2>
         <div className="flex flex-col gap-2 p-2">
           {emAndamento.map((os) => (
-            <ServiceCard key={os.id} ordemServico={os} />
+            <ServiceCard key={os.id} ordemServico={os} atualizarStatus={atualizarStatus} />
           ))}
         </div>
       </div>
@@ -25,7 +26,7 @@ function ServiceBoard({ ordensServico }: ServiceBoardProps) {
         <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Concluída </h2>
         <div className="flex flex-col gap-2 p-2">
           {concluida.map((os) => (
-            <ServiceCard key={os.id} ordemServico={os} />
+            <ServiceCard key={os.id} ordemServico={os} atualizarStatus={atualizarStatus} />
           ))}
         </div>
       </div>
@@ -34,7 +35,7 @@ function ServiceBoard({ ordensServico }: ServiceBoardProps) {
         <h2 className="bg-blue-400 text-white p-2 rounded-t-lg text-center font-bold"> Entregue </h2>
         <div className="flex flex-col gap-2 p-2">
           {entregue.map((os) => (
-            <ServiceCard key={os.id} ordemServico={os} />
+            <ServiceCard key={os.id} ordemServico={os} atualizarStatus={atualizarStatus} />
           ))}
         </div>
       </div>

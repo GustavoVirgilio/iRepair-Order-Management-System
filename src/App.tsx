@@ -15,7 +15,7 @@ function App() {
   }
 
   const osTeste2: OrdemServico = {
-    id: Date.now(),
+    id: Date.now() + 1,
     nomeCliente: "Luiz",
     modeloAparelho: "Motorola",
     defeito: "Bateria",
@@ -23,7 +23,7 @@ function App() {
   }
 
   const osTeste3: OrdemServico = {
-    id: Date.now(),
+    id: Date.now() + 2,
     nomeCliente: "Pedro",
     modeloAparelho: "macbook air",
     defeito: "não liga",
@@ -36,11 +36,17 @@ function App() {
     setOrdensServico((valorAnterior) => [...valorAnterior, novaOS])
   }
 
+  function atualizarStatus(id: number, novoStatus: OrdemServico["status"]) {
+    setOrdensServico((valorAnterior) => valorAnterior.map((os) => 
+      os.id === id ? {...os, status: novoStatus} : os
+    ));
+  }
+
   return (
     <div className="bg-sky-100 min-h-screen flex  flex-col gap-4">
       <Header />
       <NewService adicionarOS={adicionarOS} />
-      <ServiceBoard ordensServico={ordensServico} />
+      <ServiceBoard ordensServico={ordensServico} atualizarStatus={atualizarStatus} />
     </div>
   )
 }
