@@ -1,5 +1,5 @@
 import type { OrdemServico } from "../types/types";
-import ServiceCard from "./Servicecard";
+import ServiceCard from "./ServiceCard";
 
 interface ServiceBoardProps {
   ordensServico: OrdemServico[];
