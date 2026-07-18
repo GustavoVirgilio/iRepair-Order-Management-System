@@ -7,14 +7,14 @@ import ServiceBoard from './components/ServiceBoard'
 
 function App() {
 
-  const [serviceOrders, setserviceOrders] = useState<serviceOrder[]>([])
+  const [serviceOrders, setServiceOrders] = useState<serviceOrder[]>([])
 
   function addSO(newSO: serviceOrder) { 
-    setserviceOrders((valorAnterior) => [...valorAnterior, newSO])
+    setServiceOrders((previousValue) => [...previousValue, newSO])
   }
 
   function updateStatus(id: number, newStatus: serviceOrder["status"]) {
-    setserviceOrders((valorAnterior) => valorAnterior.map((os) => 
+    setServiceOrders((previousValue) => previousValue.map((os) => 
       os.id === id ? {...os, status: newStatus} : os
     ));
   }

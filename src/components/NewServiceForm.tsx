@@ -6,26 +6,26 @@ interface NewServiceFormProps {
 }
 
 function NewServiceForm({ addSO }: NewServiceFormProps) {
-  const [nomeCliente, setNomeCliente] = useState("");
-  const [modeloAparelho, setModeloAparelho] = useState("");
-  const [defeito, setDefeito] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [deviceModel, setDeviceModel] = useState("");
+  const [defect, setDefect] = useState("");
 
   function handleSave() {
-    if (nomeCliente === "" || modeloAparelho === "" || defeito === "") {
+    if (clientName === "" || deviceModel === "" || defect === "") {
       return;
     }
     const newSO: serviceOrder = {
       id: Date.now(),
-      nomeCliente: nomeCliente,
-      modeloAparelho: modeloAparelho,
-      defeito: defeito,
-      status: "em andamento",
+      clientName: clientName,
+      deviceModel: deviceModel,
+      defect: defect,
+      status: "in progress"
     };
     addSO(newSO);
 
-    setNomeCliente("");
-    setModeloAparelho("");
-    setDefeito("");
+    setClientName("");
+    setDeviceModel("");
+    setDefect("");
   }
 
   return (
@@ -34,8 +34,8 @@ function NewServiceForm({ addSO }: NewServiceFormProps) {
         <label className="text-sm text-gray-900">Nome do cliente</label>
         <input
           className="w-full border border-blue-300 rounded-md p-2"
-          value={nomeCliente}
-          onChange={(e) => setNomeCliente(e.target.value)}
+          value={clientName}
+          onChange={(e) => setClientName(e.target.value)}
           placeholder="Nome do cliente"
         />
       </div>
@@ -44,8 +44,8 @@ function NewServiceForm({ addSO }: NewServiceFormProps) {
         <label className="text-sm text-gray-900">Modelo do aparelho</label>
         <input
           className="w-full flex-1 border border-blue-300 rounded-md p-2"
-          value={modeloAparelho}
-          onChange={(e) => setModeloAparelho(e.target.value)}
+          value={deviceModel}
+          onChange={(e) => setDeviceModel(e.target.value)}
           placeholder="Modelo do aparelho"
         />
       </div>
@@ -54,8 +54,8 @@ function NewServiceForm({ addSO }: NewServiceFormProps) {
         <label className="text-sm text-gray-900">Defeito do aparelho</label>
         <input
           className="w-full flex-1 border border-blue-300 rounded-md p-2"
-          value={defeito}
-          onChange={(e) => setDefeito(e.target.value)}
+          value={defect}
+          onChange={(e) => setDefect(e.target.value)}
           placeholder="Defeito do aparelho"
         />
       </div>

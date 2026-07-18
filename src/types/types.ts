@@ -1,4 +1,4 @@
-export interface ServiceOrder {
+export interface serviceOrder {
   id: number;
   clientName: string;
   deviceModel: string;

@@ -7,9 +7,9 @@ interface ServiceBoardProps {
 }
 
 function ServiceBoard({ serviceOrders, updateStatus }: ServiceBoardProps) {
-  const emAndamento = serviceOrders.filter((os) => os.status === "em andamento");
-  const concluida = serviceOrders.filter((os) => os.status === "concluida");
-  const entregue = serviceOrders.filter((os) => os.status === "entregue");
+  const emAndamento = serviceOrders.filter((os) => os.status === "in progress");
+  const concluida = serviceOrders.filter((os) => os.status === "completed");
+  const entregue = serviceOrders.filter((os) => os.status === "delivered");
 
   return (
     <div className="bg-sky-100 flex flex-row gap-4 p-4">
