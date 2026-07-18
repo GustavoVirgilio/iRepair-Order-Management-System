@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import type { serviceOrder } from './types/types'
+import type { serviceOrder } from './types/serviceOrder'
 import Header from './components/Header'
 import NewServiceForm from './components/NewServiceForm'
 import ServiceBoard from './components/ServiceBoard'

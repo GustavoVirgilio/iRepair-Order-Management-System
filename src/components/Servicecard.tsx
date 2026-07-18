@@ -1,4 +1,4 @@
-import type { serviceOrder } from "../types/types";
+import type { serviceOrder } from "../types/serviceOrder";
 
 interface ServiceCardProps {
   serviceOrder: serviceOrder;
