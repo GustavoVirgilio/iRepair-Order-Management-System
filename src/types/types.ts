@@ -1,7 +1,7 @@
-export interface OrdemServico {
+export interface ServiceOrder {
   id: number;
-  nomeCliente: string;
-  modeloAparelho: string;
-  defeito: string;
-  status: "em andamento" | "concluida" | "entregue";
+  clientName: string;
+  deviceModel: string;
+  defect: string;
+  status: "in progress" | "completed" | "delivered";
 }

@@ -1,27 +1,27 @@
 import { useState } from "react";
-import type { OrdemServico } from "../types/types";
+import type { serviceOrder } from "../types/types";
 
 interface NewServiceFormProps {
-  adicionarOS: (novaOS: OrdemServico) => void;
+  addSO: (newSO: serviceOrder) => void;
 }
 
-function NewServiceForm({ adicionarOS }: NewServiceFormProps) {
+function NewServiceForm({ addSO }: NewServiceFormProps) {
   const [nomeCliente, setNomeCliente] = useState("");
   const [modeloAparelho, setModeloAparelho] = useState("");
   const [defeito, setDefeito] = useState("");
 
-  function handleSalvar() {
+  function handleSave() {
     if (nomeCliente === "" || modeloAparelho === "" || defeito === "") {
       return;
     }
-    const novaOS: OrdemServico = {
+    const newSO: serviceOrder = {
       id: Date.now(),
       nomeCliente: nomeCliente,
       modeloAparelho: modeloAparelho,
       defeito: defeito,
       status: "em andamento",
     };
-    adicionarOS(novaOS);
+    addSO(newSO);
 
     setNomeCliente("");
     setModeloAparelho("");
@@ -62,7 +62,7 @@ function NewServiceForm({ adicionarOS }: NewServiceFormProps) {
 
       <button
         className="bg-green-400 hover:bg-green-500 text-white font-bold rounded-md px-6 py-2 self-end shrink-0 cursor-pointer"
-        onClick={handleSalvar}> Salvar </button>
+        onClick={handleSave}> Salvar </button>
     </div>
   );
 }
