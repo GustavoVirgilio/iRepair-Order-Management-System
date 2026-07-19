@@ -1,30 +1,20 @@
-import { useState } from 'react'
-
-import type { serviceOrder } from './types/serviceOrder'
-import Header from './components/Header'
-import NewServiceForm from './components/NewServiceForm'
-import ServiceBoard from './components/ServiceBoard'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/MainLayout';
+import DashboardPage from './pages/DashboardPage';
+import ClientsPage from './pages/ClientsPage';
+import ServiceOrdersPage from './pages/ServiceOrdersPage';
 
 function App() {
-
-  const [serviceOrders, setServiceOrders] = useState<serviceOrder[]>([])
-
-  function addSO(newSO: serviceOrder) { 
-    setServiceOrders((previousValue) => [...previousValue, newSO])
-  }
-
-  function updateStatus(id: number, newStatus: serviceOrder["status"]) {
-    setServiceOrders((previousValue) => previousValue.map((os) => 
-      os.id === id ? {...os, status: newStatus} : os
-    ));
-  }
-
   return (
-    <div className="bg-sky-100 min-h-screen flex  flex-col gap-4">
-      <Header />
-      <NewServiceForm addSO={addSO} />
-      <ServiceBoard serviceOrders={serviceOrders} updateStatus={updateStatus} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/service-orders" element={<ServiceOrdersPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
