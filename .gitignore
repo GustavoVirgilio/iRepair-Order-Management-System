@@ -31,3 +31,6 @@ dist-ssr
 *.sln
 *.sw?
 .windsurf/
+
+# Prisma generated client
+api/src/generated/
