@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AuthController } from "../auth/auth.controllers";
+import { authMiddleware } from "../../middlewares/authMiddleware";
 
 const authRoutes = Router();
 const authController = new AuthController();
@@ -17,6 +18,12 @@ authRoutes.post(
 authRoutes.post(
   "/logout",
   authController.logout.bind(authController),
+);
+
+authRoutes.get(
+  "/me",
+  authMiddleware,
+  authController.me.bind(authController),
 );
 
 export { authRoutes };
