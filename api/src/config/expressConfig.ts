@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 
 import { clientsRouter } from "../domains/clients/clients.routes";
 import { serviceOrdersRouter } from "../domains/service-orders/serviceOrders.routes";
+import { authRoutes } from "../domains/auth/auth.routes";
 
 export const app = express();
 
@@ -21,3 +22,5 @@ app.use(cookieParser());
 app.use("/clients", clientsRouter);
 
 app.use("/service-orders", serviceOrdersRouter);
+
+app.use("/auth", authRoutes);
