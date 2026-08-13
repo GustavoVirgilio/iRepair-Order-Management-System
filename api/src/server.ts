@@ -10,8 +10,8 @@ if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL não definido nas variáveis de ambiente")
 }
 
-const PORTA  = process.env.PORTA || 3030;
+const PORT  = process.env.PORT || 3030;
 
-app.listen(PORTA, () => {
-    console.log(`Servidor rodando na porta ${PORTA}`)
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
 })
