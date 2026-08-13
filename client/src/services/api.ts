@@ -1,10 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://trainee.fidelis.workers.dev/api',
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
   headers: {
-    'Authorization': 'Bearer 04db447c-b81c-4fe2-b1c4-415b5c9c9a9e',
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
-
