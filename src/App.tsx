@@ -1,30 +1,20 @@
-import { useState } from 'react'
-
-import type { OrdemServico } from './types/types'
-import Header from './components/Header'
-import NewServiceForm from './components/NewServiceForm'
-import ServiceBoard from './components/ServiceBoard'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/MainLayout';
+import DashboardPage from './pages/DashboardPage';
+import ClientsPage from './pages/ClientsPage';
+import ServiceOrdersPage from './pages/ServiceOrdersPage';
 
 function App() {
-
-  const [ordensServico, setOrdensServico] = useState<OrdemServico[]>([])
-
-  function adicionarOS(novaOS: OrdemServico) { 
-    setOrdensServico((valorAnterior) => [...valorAnterior, novaOS])
-  }
-
-  function atualizarStatus(id: number, novoStatus: OrdemServico["status"]) {
-    setOrdensServico((valorAnterior) => valorAnterior.map((os) => 
-      os.id === id ? {...os, status: novoStatus} : os
-    ));
-  }
-
   return (
-    <div className="bg-sky-100 min-h-screen flex  flex-col gap-4">
-      <Header />
-      <NewServiceForm adicionarOS={adicionarOS} />
-      <ServiceBoard ordensServico={ordensServico} atualizarStatus={atualizarStatus} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/service-orders" element={<ServiceOrdersPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

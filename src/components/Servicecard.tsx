@@ -1,34 +1,38 @@
-import type { OrdemServico } from "../types/types";
+import type { ServiceOrder } from "../types";
 
 interface ServiceCardProps {
-  ordemServico: OrdemServico;
-  atualizarStatus: (id: number, novoStatus: OrdemServico["status"]) => void;
+  serviceOrder: ServiceOrder;
+  clientName: string;
+  onDeleteServiceOrder: (id: number) => Promise<void>;
 }
 
-function ServiceCard({ ordemServico, atualizarStatus }: ServiceCardProps) {
+const ServiceCard = ({ serviceOrder, clientName, onDeleteServiceOrder }: ServiceCardProps) => {
   return (
     <div
       className={`p-4 rounded-lg shadow ${
-        ordemServico.status === "em andamento" ? "bg-orange-300"
-        : ordemServico.status === "concluida"  ? "bg-yellow-300"
+        serviceOrder.status === "open" ? "bg-orange-300"
+        : serviceOrder.status === "in_progress" ? "bg-yellow-300"
         : "bg-green-300"
       }`}>
-      <p>Cliente: {ordemServico.nomeCliente} </p>
-      <p>Modelo: {ordemServico.modeloAparelho} </p>
-      <p>Defeito: {ordemServico.defeito} </p>
-      <p>Status:
-        <select
-          value={ordemServico.status}
-          onChange={(e) => atualizarStatus(ordemServico.id, e.target.value as OrdemServico["status"])}
-          className="ml-2 border border-gray-400 rounded-md px-1 py-1 bg-white text-black font-medium cursor-pointer"
-        >
-          <option value="em andamento">Em andamento</option>
-          <option value="concluida">Concluída</option>
-          <option value="entregue">Entregue</option>
-        </select>
+      <p>Cliente: {clientName} </p>
+      <p>Modelo: {serviceOrder.device} </p>
+      <p>Defeito: {serviceOrder.issue} </p>
+      <p>
+        Status: {
+          serviceOrder.status === "open" ? "Aberta"
+          : serviceOrder.status === "in_progress" ? "Em andamento"
+          : "Concluída"
+        }
       </p>
+
+      <button
+        className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-md px-4 py-2 cursor-pointer"
+        onClick={() => onDeleteServiceOrder(serviceOrder.id)}
+      >
+        Remover
+      </button>
     </div>
   );
-}
+};
 
 export default ServiceCard;
