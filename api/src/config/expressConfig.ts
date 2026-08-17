@@ -12,7 +12,10 @@ export const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: [
+            "http://localhost:5173", // npm run dev 
+            "http://localhost:8080", // Coloquei aqui para também incluir ela na hora de rodar o docker
+                ],
         credentials: true,
     }),
 );
